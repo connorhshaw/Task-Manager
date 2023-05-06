@@ -26,3 +26,8 @@ def delete(request, list_id):
     item.delete()
     messages.success(request, ('Item deleted'))
     return redirect('home')
+
+#dynamic URL view
+def tasks(request, pk_test):
+    task = TaskDb.objects.get(id=pk_test)
+    return render(request, 'tasks.html', {'task':task})

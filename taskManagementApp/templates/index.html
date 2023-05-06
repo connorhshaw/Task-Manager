@@ -11,15 +11,15 @@
     <h1>Task List</h1>
     <table class="table table-striped">
         <tr>
-            <th>Task Name</th>
+            <th>Task</th>
             <th>Completed</th>
             <th>Delete?</th>
         </tr>
         {% for item in all_items %}
         <tr>
-            <td><p>{{item.task}}</p></td>
-            <td>{{item.completed}}</td>
-            <td><a href="{% url 'delete' item.id %}">Delete</a></td>
+            <td><a href="{% url 'tasks' item.id %}">{{item.task}}</a></td>
+            <td><input type="checkbox" class="form-check-input" type="checkbox" id="flexCheckDisabled" disabled="disabled" {% if item.completed == True %} checked="checked"{% endif %}</td>
+            <td><a href="{% url 'delete' item.id %}" class="btn btn-primary" role="button">Delete</a></td>
         </tr>
         {% endfor %}
     </table>
